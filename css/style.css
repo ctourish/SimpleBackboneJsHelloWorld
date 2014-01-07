@@ -1,0 +1,11 @@
+.swap {
+	font-family:sans-serif; 
+	color:blue; 
+	cursor:pointer;
+}
+
+.delete {
+	cursor:pointer; 
+	color:red; 
+	font-family:sans-serif;
+}
