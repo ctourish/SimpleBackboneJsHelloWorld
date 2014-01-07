@@ -1,11 +1,48 @@
+.string1 {
+	color: red;
+}
+
+.string2 {
+	color: green;
+}
+
+.string-hightlight {
+	background-color: yellow;
+}
+
 .swap {
 	font-family:sans-serif; 
-	color:blue; 
+	color:#000; 
 	cursor:pointer;
+	background-color: #fff;
+	font-weight: bold;
+	margin-right: 10px;
 }
 
 .delete {
 	cursor:pointer; 
-	color:red; 
+	color:#000; 
 	font-family:sans-serif;
+	background-color: #fff;
+	font-weight: bold;
+}
+
+.highlight {
+	cursor:pointer; 
+	color:#000; 
+	font-family:sans-serif;
+	font-weight: bold;
+	background-color: #fff;
+}
+
+li {
+    background-color: #ccc;
+    width: 300px;
+    list-style-type: none;
+}
+li:nth-child(odd) {
+    background-color: #999;
+}
+li:nth-child(even) {
+    background-color: #666;
 }

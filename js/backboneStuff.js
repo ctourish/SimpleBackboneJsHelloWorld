@@ -21,18 +21,20 @@
     // `ItemView`s now respond to two clickable actions for each `Item`: swap and delete.
     events: {
       'click span.swap':  'swap',
-      'click span.delete': 'remove'
+      'click span.delete': 'remove',
+      'click span.highlight': 'highlight'
     },
     // `initialize()` now binds model change/removal to the corresponding handlers below.
     initialize: function(){
-      _.bindAll(this, 'render', 'unrender', 'swap', 'remove'); // every function that uses 'this' as the current object should be in here
+      _.bindAll(this, 'render', 'unrender', 'swap', 'remove', 'highlight'); // every function that uses 'this' as the current object should be in here
 
       this.model.bind('change', this.render);
       this.model.bind('remove', this.unrender);
+      this.model.bind('change', this.highlight);
     },
     // `render()` now includes two extra `span`s corresponding to the actions swap and delete.
     render: function(){
-      $(this.el).html('<span style="color:black;">'+this.model.get('part1')+' '+this.model.get('part2')+'</span> &nbsp; &nbsp; <span class="swap" style="font-family:sans-serif; color:blue; cursor:pointer;">[swap]</span> <span class="delete" style="cursor:pointer; color:red; font-family:sans-serif;">[delete]</span>');
+      $(this.el).html('<span class="string1">'+this.model.get('part1')+ ' </span>'+'<span class="string2">'+this.model.get('part2')+'</span> &nbsp; &nbsp; <span class="swap" >[swap]</span> <span class="delete">[delete]</span><span class="highlight">[highlight]</span>');
       return this; // for chainable calls, like .render().el
     },
     // `unrender()`: Makes Model remove itself from the DOM.
@@ -50,6 +52,10 @@
     // `remove()`: We use the method `destroy()` to remove a model from its collection. Normally this would also delete the record from its persistent storage, but we have overridden that (see above).
     remove: function(){
       this.model.destroy();
+    },
+
+    highlight: function(){
+      $(this.el).addClass("string-hightlight");
     }
   });
 
